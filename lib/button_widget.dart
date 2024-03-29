@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ButtonWidget extends StatefulWidget {
-  late String digit  ;
+  String digit  ;
   Function onDigitclik ;
   ButtonWidget(this.digit, this.onDigitclik);
 
@@ -18,8 +18,10 @@ class _ButtonWidgetState extends State<ButtonWidget> {
           margin: const EdgeInsets.all(4),
           child: ElevatedButton(
             onPressed: (){
-              widget.onDigitclik(widget.digit);
-
+              if(widget.digit=="=" ){
+                widget.onDigitclik();
+              }
+               widget.onDigitclik(widget.digit);
             },
             child:
             Text(widget.digit ,

@@ -84,7 +84,7 @@ class _claculaterState extends State<claculater> {
                 children: [
                   ButtonWidget('0', ondigetclik),
                   ButtonWidget('.', ondigetclik),
-                  ButtonWidget('=',onOperatotclik),
+                  ButtonWidget('=',OequelClik),
                   ButtonWidget('/',onOperatotclik),
                 ],
               )
@@ -108,16 +108,43 @@ class _claculaterState extends State<claculater> {
   void onOperatotclik(String operatorclik){
     if (LHS.isEmpty){
       LHS=result ;
-      operator=operatorclik ;
-      setState(() {
 
-      });
-      result=" ";
     }
     else {
       String RHS=result ;
-    }
+      LHS =calculator(LHS,operator,RHS).toString();
 
+
+      }
+    setState(() {
+
+    });
+    result=" ";
+    operator=operatorclik;
+    }
+    double? calculator( LHS, operator, RHS){
+       double LHSdouble= double.parse(LHS);
+       double RHSdouble =double.parse(RHS);
+
+      if (operator=='+'){return LHSdouble+RHSdouble;}
+       if (operator=='-'){return LHSdouble-RHSdouble;}
+       if (operator=='*'){return LHSdouble*RHSdouble;}
+       if (operator=='/'){return LHSdouble/RHSdouble;}
+
+
+
+
+
+  }
+  void OequelClik(){
+    print (LHS);
+    print(result);
+    print(operator);
+
+      result=calculator(LHS,operator,result).toString();
+      LHS=" ";
+      setState(() {
+      });
 
 
   }
